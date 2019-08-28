@@ -15,12 +15,17 @@ const SEO = ({ title, description }) => {
     }
   `)
 
-  const fullTitle = title ? `${title} | ${siteMetadata.title}` : siteMetadata.title
+  const fullTitle = () => {
+    if (title && title !== 'index') {
+      return `${title} | ${siteMetadata.title}`
+    }
+    return siteMetadata.title
+  }
 
   return (
     <Helmet>
-      <title>{fullTitle}</title>
-      <meta name="title" content={fullTitle} />
+      <title>{fullTitle()}</title>
+      <meta name="title" content={fullTitle()} />
       <meta name="description" content={description || siteMetadata.description} />
     </Helmet>
   )
