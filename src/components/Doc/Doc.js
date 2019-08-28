@@ -6,7 +6,6 @@ import {
 import SEO from '../SEO/SEO'
 
 const Doc = ({ data: { doc } }) => {
-  console.log('doc type', typeof doc, doc)
   const headingTitle = doc.headings[0] && doc.headings[0].value
 
   return (
