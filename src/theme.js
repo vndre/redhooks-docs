@@ -1,5 +1,5 @@
 const heading = {
-  fontFamily: 'heading',
+  fontFamily: 'body',
   fontWeight: 'heading',
   lineHeight: 'heading',
   a: {
@@ -9,60 +9,35 @@ const heading = {
 }
 
 export default {
-  initialColorMode: 'light',
   colors: {
-    text: '#000',
-    background: '#fff',
-    primary: '#33e',
-    secondary: '#119',
-    muted: '#f6f6f6',
-    highlight: '#ffffcc',
-    gray: '#777',
-    purple: '#609',
-    modes: {
-      dark: {
-        text: '#fff',
-        background: '#060606',
-        primary: '#3cf',
-        secondary: '#e0f',
-        muted: '#191919',
-        highlight: '#ffffcc',
-        gray: '#999',
-        purple: '#c0f'
-      },
-      deep: {
-        text: 'hsl(210, 50%, 96%)',
-        background: 'hsl(230, 25%, 18%)',
-        primary: 'hsl(260, 100%, 80%)',
-        secondary: 'hsl(290, 100%, 80%)',
-        purple: 'hsl(290, 100%, 80%)',
-        muted: 'hsla(230, 20%, 0%, 20%)',
-        gray: 'hsl(210, 50%, 60%)'
-      },
-      swiss: {
-        text: 'hsl(10, 20%, 20%)',
-        background: 'hsl(10, 10%, 98%)',
-        primary: 'hsl(10, 80%, 50%)',
-        secondary: 'hsl(10, 60%, 50%)',
-        purple: 'hsl(250, 60%, 30%)',
-        muted: 'hsl(10, 20%, 94%)',
-        gray: 'hsl(10, 20%, 50%)'
-      }
-    }
+    text: '#080808',
+    background: '#f5eded',
+    primary: '#fb3030',
+    secondary: '#fb6b6b',
+    muted: '#a3a19e'
   },
   fonts: {
-    body: 'system-ui, sans-serif',
-    heading: 'inherit',
-    monospace: 'Menlo, monospace'
+    body: 'code sans, monospace',
+    heading: 'code sans, monospace',
+    monospace: 'code sans, monospace'
   },
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
   fontWeights: {
-    body: '400',
+    body: '300',
     heading: '700'
   },
+  space: [
+    0, 4, 8, 16, 32, 64, 128, 256
+  ],
   lineHeights: {
     body: 1.5,
-    heading: 1.25
+    heading: 1.75
+  },
+  shadows: {
+    base: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+    small: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+    medium: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+    large: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
   },
   textStyles: {
     heading,
@@ -83,7 +58,10 @@ export default {
       fontWeight: 'body'
     },
     h1: {
-      variant: 'textStyles.display'
+      fontSize: [3, 4],
+      fontWeight: 'fontWeights.heading',
+      mt: 0,
+      mb: 2
     },
     h2: {
       variant: 'textStyles.heading',
@@ -111,6 +89,12 @@ export default {
         color: 'secondary'
       }
     },
+    buttons: {
+      primary: {
+        color: 'text',
+        bg: 'primary'
+      }
+    },
     pre: {
       variant: 'prism',
       fontFamily: 'monospace',
@@ -132,33 +116,6 @@ export default {
       fontFamily: 'monospace',
       color: 'secondary',
       bg: 'muted'
-    },
-    table: {
-      width: '100%',
-      my: 4,
-      borderCollapse: 'separate',
-      borderSpacing: 0,
-      [['th', 'td']]: {
-        textAlign: 'left',
-        py: '4px',
-        pr: '4px',
-        pl: 0,
-        borderColor: 'muted',
-        borderBottomStyle: 'solid'
-      }
-    },
-    th: {
-      verticalAlign: 'bottom',
-      borderBottomWidth: '2px'
-    },
-    td: {
-      verticalAlign: 'top',
-      borderBottomWidth: '1px'
-    },
-    hr: {
-      border: 0,
-      borderBottom: '1px solid',
-      borderColor: 'muted'
     }
   },
   prism: {
@@ -172,7 +129,7 @@ export default {
       '.entity',
       '.url'
     ]]: {
-      color: 'gray'
+      color: 'muted'
     },
     '.comment': {
       fontStyle: 'italic'
@@ -191,7 +148,7 @@ export default {
       '.important',
       '.variable'
     ]]: {
-      color: 'purple'
+      color: 'primary'
     },
     [['.atrule', '.attr-value', '.keyword']]: {
       color: 'primary'
