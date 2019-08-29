@@ -61,7 +61,7 @@ export default {
       fontSize: 5,
       variant: 'textStyles.heading',
       mt: 0,
-      mb: 4
+      mb: 3
     },
     h2: {
       variant: 'textStyles.heading',
@@ -87,8 +87,7 @@ export default {
       color: 'primary',
       display: 'inline-block',
       fontWeight: 'bold',
-      px: 2,
-      py: 1,
+      cursor: 'pointer',
       textDecoration: 'none',
       '&:hover': {
         color: 'secondary'
