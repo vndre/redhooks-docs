@@ -1,7 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: 'Redhooks',
-    description: 'Redhooks is a tiny React utility library for holding a predictable state container in your React apps.'
+    description: 'Redhooks is a tiny React utility library for holding a predictable state container in your React apps.',
+    repository: 'https://github.com/iusehooks/redhooks'
   },
   plugins: [
     'gatsby-plugin-theme-ui',
