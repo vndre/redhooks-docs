@@ -2,17 +2,18 @@ import React from 'react'
 import {
   Flex, Heading, Text, Box
 } from 'rebass'
+import { rem } from 'polished'
 import { ReactComponent as ArrowIcon } from '../../assets/svg/arrow-down.svg'
 
 const Hero = () => (
     <Flex
       as='section'
-      p={4}
+      p={[4, 5, 6]}
       height='100vh'
       justifyContent='center'
       alignItems='center'
       flexDirection='column'
-      maxWidth='1500px'
+      maxWidth={rem('1500px')}
     >
       <Heading
         fontSize={[5, 6]}
@@ -32,7 +33,7 @@ const Hero = () => (
         textAlign='center'
         css={{
           userSelect: 'none',
-          maxWidth: '800px'
+          maxWidth: rem('800px')
         }}
       >
         Redhooks is a tiny React utility library for holding a predictable
@@ -44,12 +45,12 @@ const Hero = () => (
       <Box
         css={{
           position: 'absolute',
-          bottom: '20px',
+          bottom: rem('20px'),
           cursor: 'pointer',
 
           '&:hover': {
             svg: {
-              transform: 'translateY(5px)'
+              transform: `translateY(${rem('5px')})`
             }
           }
         }}
@@ -58,8 +59,8 @@ const Hero = () => (
         <Text fontWeight='bold'>documentation</Text>
         <ArrowIcon
           css={{
-            width: '30px',
-            height: '30px',
+            width: rem('30px'),
+            height: rem('30px'),
             display: 'block',
             margin: 'auto',
             transitionProperty: 'transform',
