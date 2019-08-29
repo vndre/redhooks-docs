@@ -11,10 +11,10 @@ const heading = {
 export default {
   colors: {
     text: '#080808',
-    background: '#f5eded',
+    background: '#fff6f6',
     primary: '#fb3030',
     secondary: '#fb6b6b',
-    muted: '#a3a19e'
+    muted: '#e2e2e2'
   },
   fonts: {
     body: 'code sans, monospace',
@@ -58,33 +58,38 @@ export default {
       fontWeight: 'body'
     },
     h1: {
-      fontSize: [3, 4],
-      fontWeight: 'fontWeights.heading',
+      fontSize: 5,
+      variant: 'textStyles.heading',
       mt: 0,
-      mb: 2
+      mb: 4
     },
     h2: {
       variant: 'textStyles.heading',
-      fontSize: 5
+      fontSize: 4
     },
     h3: {
       variant: 'textStyles.heading',
-      fontSize: 4
+      fontSize: 3
     },
     h4: {
       variant: 'textStyles.heading',
-      fontSize: 3
+      fontSize: 2
     },
     h5: {
       variant: 'textStyles.heading',
-      fontSize: 2
+      fontSize: 1
     },
     h6: {
       variant: 'textStyles.heading',
-      fontSize: 1
+      fontSize: 0
     },
     a: {
       color: 'primary',
+      display: 'inline-block',
+      fontWeight: 'bold',
+      px: 2,
+      py: 1,
+      textDecoration: 'none',
       '&:hover': {
         color: 'secondary'
       }
