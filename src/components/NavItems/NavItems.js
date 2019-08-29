@@ -1,25 +1,24 @@
 import React from 'react'
 import {
-  arrayOf, exact, string, object, shape
+  arrayOf, exact, string, object, shape, func, bool
 } from 'prop-types'
 import { Box } from 'rebass'
-import { rem } from 'polished'
-import { Link } from 'gatsby'
+import LocalLink from '../LocalLink/LocalLink'
 
-const isActive = ({ isCurrent }) => (
-  isCurrent
-    ? {
-      style: {
-        color: '#fb6b6b'
-      }
-    }
-    : null
-)
-
-const NavItems = ({ items, UlProps = {}, LiProps = {} }) => (
+const NavItems = ({
+  items,
+  UlProps = {},
+  LiProps = {},
+  clickAction = undefined
+}) => (
   <Box
     as='ul'
     p={4}
+    sx={{
+      '> * + *': {
+        mt: 2
+      }
+    }}
     {...UlProps}
   >
     {
@@ -31,27 +30,11 @@ const NavItems = ({ items, UlProps = {}, LiProps = {} }) => (
           }}
           {...LiProps}
         >
-          <Link
+          <LocalLink
+            text={node.title === 'index' ? 'introduction' : node.title}
             to={node.slug}
-            getProps={isActive}
-            css={{
-              color: '#080808',
-              display: 'inline-block',
-              fontWeight: 'bold',
-              marginBottom: rem('15px'),
-              textDecoration: 'none',
-              textTransform: 'capitalize',
-              '&:hover': {
-                color: '#fb6b6b'
-              }
-            }}
-          >
-            {
-              node.title === 'index'
-                ? 'introduction'
-                : node.title
-            }
-          </Link>
+            clickAction={clickAction}
+          />
         </li>
       ))
     }
@@ -68,7 +51,9 @@ NavItems.propTypes = {
     })
   ).isRequired,
   UlProps: object,
-  LiProps: object
+  LiProps: object,
+  clickAction: func,
+  invertedItems: bool
 }
 
 export default NavItems
