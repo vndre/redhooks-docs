@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 import { element } from 'prop-types'
 import { Styled } from 'theme-ui'
-import { Box } from 'rebass'
+import { Flex, Box } from 'rebass'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Hero, Global } from '../../components'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
-import { NavMobile } from '..'
+import { NavMobile, NavDesktop } from '..'
 
 const Layout = ({ children }) => {
+  const [menuOpen, setMenuOpen] = useState(false)
   const { width } = useWindowDimensions()
+  const isDesktop = width > 768
   const { allDocs } = useStaticQuery(graphql`
     query docsQuery {
       allDocs {
@@ -22,29 +24,48 @@ const Layout = ({ children }) => {
     }
   `)
 
+  const toggleMenu = useCallback(
+    () => setMenuOpen((o) => !o),
+    [menuOpen],
+  )
+
   return (
-    <Styled.root>
+    <Styled.root
+      css={{
+        overflowY: menuOpen ? 'hidden' : 'auto',
+        height: '100vh'
+      }}
+    >
       <Global />
       <Hero />
-      <Box
+      <Flex
         as='section'
-        p={[4, 5, 6]}
+        id='content'
+        p={[4, 5]}
+        flexDirection={!isDesktop ? 'column' : 'row'}
+        alignItems='flex-start'
         css={{
-          position: 'relative'
+          position: 'relative',
+          height: menuOpen ? '100vh' : 'auto'
         }}
       >
         {
           width > 768
-            ? <span>dektopmn</span>
-            : <NavMobile navItems={allDocs.edges} />
+            ? <NavDesktop navItems={allDocs.edges} />
+            : <NavMobile
+              navItems={allDocs.edges}
+              open={menuOpen}
+              setOpen={toggleMenu}
+            />
         }
         <Box
           as='article'
-          mt={[4, 5, 6]}
+          mt={!isDesktop ? 4 : 0}
+          width='100%'
         >
           {children}
         </Box>
-      </Box>
+      </Flex>
     </Styled.root>
   )
 }
