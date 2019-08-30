@@ -4,6 +4,8 @@ import {
   Flex, Heading, Text, Box, Link
 } from 'rebass'
 import { rem } from 'polished'
+import { Styled } from 'theme-ui'
+import { Logo } from '../../components'
 import { ReactComponent as ArrowIcon } from '../../assets/svg/arrow-down.svg'
 import { ReactComponent as RepoIcon } from '../../assets/svg/repository.svg'
 
@@ -26,7 +28,6 @@ const Hero = (props) => {
       justifyContent='center'
       alignItems='center'
       flexDirection='column'
-      maxWidth={rem('1500px')}
       css={{
         position: 'relative'
       }}
@@ -42,7 +43,6 @@ const Hero = (props) => {
         <Link
           href={site.siteMetadata.repository}
           color='secondary'
-          alt='repository'
         >
           <RepoIcon
             css={{
@@ -52,6 +52,7 @@ const Hero = (props) => {
           />
         </Link>
       </Box>
+      <Logo />
       <Heading
         fontSize={[5, 6]}
         color='primary'
@@ -74,10 +75,12 @@ const Hero = (props) => {
         }}
       >
         Redhooks is a tiny React utility library for holding a predictable
-        state container in your React apps. Inspired by Redux, it
-        reimplements the redux paradigm of state-management by using
-        React&apos;s new Hooks and Context API, which have been officially
-        released by the React team.
+        state container in your React apps. Inspired by&ensp;
+        <Styled.a href='https://redux.js.org/'>Redux</Styled.a>, it reimplements
+        the redux paradigm of state-management by using React&apos;s new Hooks
+        and Context API, which have been&ensp;
+        <Styled.a href='https://reactjs.org/docs/hooks-reference.html'>officially released</Styled.a>
+        &ensp;by the React team.
       </Text>
       <Box
         css={{
