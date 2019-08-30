@@ -1,0 +1,27 @@
+---
+title: createStore
+description: createStore() returns an object that becomes the store data once passed to a Provider
+---
+
+# createStore
+
+```javascript
+createStore(reducer, [opts])
+```
+
+`createStore` returns the store object to be passed to the `Provider`.
+* The `reducer` argument might be a single reducer function, a function returned by `combineReducers` or a plain object whose values are reducer functions (if your store requires multiple reducers).
+* The `opts` optional argument is an object which allows you to pass a `preloadedState`, `initialAction` and `middlewares`.
+
+> The store is ready when the `Provider` is mounted, after which an `onload` event will be triggered.
+
+```javascript
+const opts = {
+    preloadedState: 1,
+    initialAction: { type: "DECREMENT" },
+    middlewares: [thunk, sagaMiddleware, logger]
+};
+
+const store = createStore(reducer, opts);
+store.onload = ({ dispatch }) => dispatch({ type: "INCREMENT" });
+```
