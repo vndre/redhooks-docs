@@ -3,7 +3,8 @@ import { element } from 'prop-types'
 import { Styled } from 'theme-ui'
 import { Flex, Box } from 'rebass'
 import { useStaticQuery, graphql } from 'gatsby'
-import { Hero, Global } from '../../components'
+import { Global, Footer } from '../../components'
+import Hero from '../Hero/Hero'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 import { NavMobile, NavDesktop } from '..'
 
@@ -32,8 +33,7 @@ const Layout = ({ children }) => {
   return (
     <Styled.root
       css={{
-        overflowY: menuOpen ? 'hidden' : 'auto',
-        height: '100vh'
+        overflowY: menuOpen ? 'hidden' : 'auto'
       }}
     >
       <Global />
@@ -66,6 +66,7 @@ const Layout = ({ children }) => {
           {children}
         </Box>
       </Flex>
+      <Footer />
     </Styled.root>
   )
 }
