@@ -1,5 +1,6 @@
 export { default as Doc } from './Doc/Doc'
 export { default as NavItems } from './NavItems/NavItems'
 export { default as Global } from './Global/Global'
-export { default as Hero } from './Hero/Hero'
 export { default as LocalLink } from './LocalLink/LocalLink'
+export { default as Footer } from './Footer/Footer'
+export { default as Logo } from './Logo/Logo'
