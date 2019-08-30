@@ -1,3 +1,5 @@
+import { rem } from 'polished'
+
 const heading = {
   fontFamily: 'body',
   fontWeight: 'heading',
@@ -9,12 +11,14 @@ const heading = {
 }
 
 export default {
+  breakpoints: ['35em', '48em', '69em', '113em'],
   colors: {
     text: '#080808',
     background: '#fff6f6',
     primary: '#fb3030',
     secondary: '#fb6b6b',
-    muted: '#e2e2e2'
+    muted: '#e2e2e2',
+    blue: '#4360ff'
   },
   fonts: {
     body: 'code sans, monospace',
@@ -48,14 +52,16 @@ export default {
     }
   },
   styles: {
-    Container: {
-      p: 3,
-      maxWidth: 1024
-    },
     root: {
       fontFamily: 'body',
       lineHeight: 'body',
-      fontWeight: 'body'
+      fontWeight: 'body',
+      height: '100vh',
+
+      '> *': {
+        maxWidth: rem('1500px'),
+        margin: 'auto !important'
+      }
     },
     h1: {
       fontSize: 5,
@@ -69,7 +75,9 @@ export default {
     },
     h3: {
       variant: 'textStyles.heading',
-      fontSize: 3
+      fontSize: 3,
+      mt: 4,
+      mb: 3
     },
     h4: {
       variant: 'textStyles.heading',
@@ -83,14 +91,34 @@ export default {
       variant: 'textStyles.heading',
       fontSize: 0
     },
+    p: {
+      textAlign: 'justify'
+    },
     a: {
       color: 'primary',
       display: 'inline-block',
       fontWeight: 'bold',
       cursor: 'pointer',
       textDecoration: 'none',
+      transition: 'color 300ms ease-in-out',
       '&:hover': {
         color: 'secondary'
+      }
+    },
+    blockquote: {
+      fontStyle: 'italic',
+      position: 'relative',
+      my: 2,
+      mx: 4,
+
+      '&::after': {
+        content: '""',
+        position: 'absolute',
+        left: rem('-16px'),
+        top: 0,
+        bottom: 0,
+        width: rem('5px'),
+        bg: 'blue'
       }
     },
     buttons: {
@@ -100,15 +128,46 @@ export default {
       }
     },
     pre: {
-      variant: 'prism',
       fontFamily: 'monospace',
       fontSize: 1,
       p: 3,
-      color: 'text',
-      bg: 'muted',
       overflow: 'auto',
-      code: {
-        color: 'inherit'
+      color: 'background',
+      backgroundColor: 'text',
+      '.prolog, .constant, .builtin': {
+        color: '#99cc99'
+      },
+      '.inserted, .function': {
+        color: '#dad085'
+      },
+      '.deleted': {
+        color: '#f92672'
+      },
+      '.changed': {
+        color: 'blue'
+      },
+      '.punctuation, .symbol, .operator': {
+        color: '#bb6c6c'
+      },
+      '.string, .char, .tag, .selector': {
+        color: '#ffb9b9',
+        opacity: '0.5'
+      },
+      '.property-access': {
+        color: '#b29def'
+      },
+      '.keyword, .variable': {
+        color: '#ff4b4b',
+        fontStyle: 'italic'
+      },
+      '.plain': {
+        color: 'background'
+      },
+      '.comment': {
+        color: '#7c7c7c'
+      },
+      '.class-name': {
+        color: '#bdb37b'
       }
     },
     code: {
@@ -118,54 +177,9 @@ export default {
     },
     inlineCode: {
       fontFamily: 'monospace',
-      color: 'secondary',
-      bg: 'muted'
-    }
-  },
-  prism: {
-    [[
-      '.comment',
-      '.prolog',
-      '.doctype',
-      '.cdata',
-      '.punctuation',
-      '.operator',
-      '.entity',
-      '.url'
-    ]]: {
-      color: 'muted'
-    },
-    '.comment': {
-      fontStyle: 'italic'
-    },
-    [[
-      '.property',
-      '.tag',
-      '.boolean',
-      '.number',
-      '.constant',
-      '.symbol',
-      '.deleted',
-      '.function',
-      '.class-name',
-      '.regex',
-      '.important',
-      '.variable'
-    ]]: {
-      color: 'primary'
-    },
-    [['.atrule', '.attr-value', '.keyword']]: {
-      color: 'primary'
-    },
-    [[
-      '.selector',
-      '.attr-name',
-      '.string',
-      '.char',
-      '.builtin',
-      '.inserted'
-    ]]: {
-      color: 'secondary'
+      color: 'background',
+      bg: 'text',
+      px: 1
     }
   }
 }
