@@ -11,7 +11,7 @@ const Footer = () => (
     textAlign='end'
   >
     <Text>
-      coded by&ensp;
+      designed by&ensp;
       <Styled.a href='https://ansky.sh'>Ansky</Styled.a>
     </Text>
   </Box>

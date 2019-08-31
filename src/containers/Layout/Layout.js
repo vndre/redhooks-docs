@@ -10,7 +10,10 @@ import { NavMobile, NavDesktop } from '..'
 
 const Layout = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false)
-  const { width } = useWindowDimensions()
+  let width
+  if (typeof window !== 'undefined') {
+    width = useWindowDimensions().width
+  }
   const isDesktop = width > 768
   const { allDocs } = useStaticQuery(graphql`
     query docsQuery {

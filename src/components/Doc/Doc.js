@@ -1,7 +1,7 @@
 import React from 'react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import {
-  exact, arrayOf, string, shape, number
+  exact, arrayOf, string, shape
 } from 'prop-types'
 import SEO from '../SEO/SEO'
 
@@ -25,7 +25,6 @@ Doc.propTypes = {
       id: string.isRequired,
       title: string.isRequired,
       description: string.isRequired,
-      position: number.isRequired,
       headings: arrayOf(exact({
         value: string.isRequired
       })).isRequired,

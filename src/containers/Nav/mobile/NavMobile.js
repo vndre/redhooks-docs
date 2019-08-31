@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 import { Box, Button } from 'rebass'
 import {
   arrayOf, object, bool, func
@@ -10,19 +10,16 @@ import { NavItems } from '../../../components'
 import theme from '../../../theme'
 
 const NavMobile = ({ navItems, open, setOpen }) => {
-  const menuEl = useRef(null)
-  const overlayEl = useRef(null)
-
   useEffect(() => {
     anime({
-      targets: menuEl.current,
-      translateX: open ? '0%' : '-110%',
-      duration: 400,
+      targets: '#memenu',
+      left: open ? '0%' : '-100%',
+      duration: 300,
       easing: 'easeInCubic'
     })
 
     const overlayTL = anime.timeline({
-      targets: overlayEl.current
+      targets: '#memenu-overlay'
     })
 
     overlayTL
@@ -62,8 +59,8 @@ const NavMobile = ({ navItems, open, setOpen }) => {
           }}
         />
       </Button>
-      <div
-        ref={overlayEl}
+      <Box
+        id='memenu-overlay'
         onClick={setOpen}
         css={{
           ...cover(),
@@ -71,17 +68,16 @@ const NavMobile = ({ navItems, open, setOpen }) => {
           zIndex: 100
         }}
       >
-      </div>
+      </Box>
       <Box
-        ref={menuEl}
+        id='memenu'
         as='nav'
         bg='text'
         sx={{
           position: 'absolute',
-          transform: 'translateY(-110%)',
           top: 0,
           bottom: 0,
-          left: 0,
+          left: '-100%',
           zIndex: 150
         }}
       >
