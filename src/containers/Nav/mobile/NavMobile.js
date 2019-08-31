@@ -67,7 +67,8 @@ const NavMobile = ({ navItems, open, setOpen }) => {
         onClick={setOpen}
         css={{
           ...cover(),
-          background: theme.colors.text
+          background: theme.colors.text,
+          zIndex: 100
         }}
       >
       </div>
@@ -80,7 +81,8 @@ const NavMobile = ({ navItems, open, setOpen }) => {
           transform: 'translateY(-110%)',
           top: 0,
           bottom: 0,
-          left: 0
+          left: 0,
+          zIndex: 150
         }}
       >
         <NavItems
