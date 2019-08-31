@@ -13,6 +13,7 @@ const Layout = ({ children }) => {
   let width
   if (typeof window !== 'undefined') {
     width = useWindowDimensions().width
+    console.log('width', width)
   }
   const isDesktop = width > 768
   const { allDocs } = useStaticQuery(graphql`
@@ -45,12 +46,12 @@ const Layout = ({ children }) => {
         as='section'
         id='content'
         p={[4, 5]}
-        flexDirection={!isDesktop ? 'column' : 'row'}
+        flexDirection={['column', 'row']}
         alignItems='flex-start'
         css={{
           position: 'relative',
           height: menuOpen ? '100vh' : 'auto'
-        }}
+        }}object
       >
         {
           width > 768
