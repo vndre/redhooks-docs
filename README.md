@@ -1,27 +1,53 @@
-# Gatsby Starter MDX Basic
+## run locally
 
-View this starter [live on Netlify](https://gatsby-starter-mdx-basic.netlify.com/)
-
-This starter build MDX support into the
-[gatsby-default-starter](https://github.com/gatsbyjs/gatsby-starter-default). Its
-README also applies here.
-
-1. Create a new Gatsby site using this starter
-
-```sh
-gatsby new my-site https://github.com/ChristopherBiscardi/gatsby-starter-mdx-basic
-```
-
-2. Install dependencies
+1. Install dependencies
 
 ```sh
 yarn
 ```
 
-3. Run the develop script
+2. Run a dev server on `:8000`
 
 ```sh
-yarn develop
+yarn dev
 ```
 
-4. Edit Page 2 in `src/pages/page-2.mdx`
+## pages structure
+
+all `.mdx` files inside _docs_ folder are turned into urls:
+
+* readme.mdx -> '/' (root)
+* something.mdx -> '/something'
+
+## doc template
+
+All docs must contain the following information:
+
+```
+---
+title: <page title>
+description: <desc>
+position: <the order in the navigation>
+---
+
+code blocks must be followed by 'javascript':
+
+```javascript
+
+// code
+
+\```
+```
+
+## production
+
+```sh
+yarn build
+```
+
+creatres /dist
+
+```sh
+yarn prod (serves at localhost)
+yarn prod:web (serves at 0.0.0.0)
+```
