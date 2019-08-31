@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+
 const FONTS = [
   'https://cdn.jsdelivr.net/gh/anskydev/mercury/fonts/CodeSansR.woff2',
   'https://cdn.jsdelivr.net/gh/anskydev/mercury/fonts/CodeSansR.woff',
@@ -19,6 +20,10 @@ export default function HTML(props) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         <meta name="robots" content="index,follow" />
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+        <link rel="icon" type="image/png" sizes="96x96" href="favicon-64.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
+        <meta name="theme-color" content="#fff6f6" />
         {
           FONTS.map((font) => <link key={font} rel="preload" href={font} as="font" />)
         }
