@@ -9,6 +9,6 @@
                         "COPY ./ /usr/src/app",
                         "ENV NODE_ENV production",
                         "EXPOSE 9000",
-                        "CMD [ \"yarn\", \"prod:web\" ]"
+                        "CMD [ \"yarn\", \"prod\" ]"
                       ]
  }
