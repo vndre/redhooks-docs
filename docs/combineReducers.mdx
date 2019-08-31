@@ -1,0 +1,19 @@
+---
+title: combineReducers
+description: combineReducers combines an object whose props are different reducer functions, into a single reducer function
+position: 4
+---
+
+# combineReducers
+
+```javascript
+combineReducers(reducers)
+```
+
+`combineReducers` combines an object whose props are different reducer functions, into a single reducer function
+* The `reducers` argument is an object whose values correspond to different reducing functions that need to be combined into one.
+
+```javascript
+const rootReducer = combineReducers({ counter, otherReducer })
+const store = createStore(rootReducer)
+```

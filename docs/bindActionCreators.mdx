@@ -1,0 +1,73 @@
+---
+title: bindActionCreators
+description: bindActionCreators turns an object whose values are action creators into an object with the same keys, but with every function wrapped in a dispatch call so they may be invoked directly.
+position: 5
+---
+
+# bindActionCreators
+
+```javascript
+bindActionCreators(actionCreators, dispatch)
+```
+`connect` function connects a React component to a Redhooks store. It returns a connected component class that wraps the component you passed in taking care to avoid unnecessary re-rendering. It should be used if your class or function components require expensive rendering.
+
+* If a `mapStateToProps` function is passed, your component will be subscribed to Redhooks store. Any time the store is updated, `mapStateToProps` will be called. The results of `mapStateToProps` must be a plain object, which will be merged into your component’s props. If you don't want to connect to Redhooks store, pass null or undefined in place of mapStateToProps.
+* `mapDispatchToProps`, if passed, may be either a function that returns a plain object whose values, themselves, are functions or a plain object whose values are [action creator](/bindActionCreators) functions. In both cases the props of the returned object will be merged in your component’s props. If is not passed your component will receive `dispatch` prop by default.
+
+`bindActionCreators` turns an object whose values are [action creators](#action-creator) into an object with the
+same keys, but with every function wrapped in a `dispatch` call so they
+may be invoked directly.
+ 
+* `actionCreators` An object whose values are action creator functions or plain objects whose values are action creator functions
+* `dispatch` The dispatch function available on your Redhooks store.
+
+#### Action creator
+An action creator is a function that creates an action.
+
+```javascript
+type ActionCreator = (...args: any) => Action | AsyncAction
+```
+
+#### Example
+`actions.js`
+
+```javascript
+export const action_1 = action_1 => action_1
+export const action_2 = action_2 => action_2
+export const action_3 = action_3 => action_3
+```
+
+`YourConnectedComponent.js`
+```javascript
+import React from "react";
+import { connect, bindActionCreators } from "redhooks";
+import * as actions from "./actions";
+
+const YourComponent = ({ actions, counter }) => (
+  <div>
+    <h1>counter</h1>
+    <button onClick={actions.action_1}>action_1</button>
+    <button onClick={actions.action_2}>action_2</button>
+    <button onClick={actions.action_2}>action_3</button>
+  </div>
+);
+
+const mapStateToProps = state => ({
+  counter: state.counter
+});
+
+// a verbose way
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(actions, dispatch)
+});
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(YourComponent);
+
+// or simply
+export default connect(
+  mapStateToProps,
+  { actions }
+)(YourComponent);
+```

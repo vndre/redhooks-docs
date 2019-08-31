@@ -1,0 +1,33 @@
+---
+title: useStore
+description: useStore can be only used within a functional component and it returns the data from the connected store.
+position: 6
+---
+
+# useStore
+
+```javascript
+useStore()
+```
+
+`useStore` can be only used within a function component and it returns the `store`.
+* The `store` is an object whose props are the `state` and the `dispatch`.
+
+```javascript
+import React from "react";
+import { useStore } from "redhooks";
+
+const Example = () => {
+  const { state, dispatch } = useStore(); // do not use it within a Class Component
+  const { counter } = state;
+  return (
+    <section>
+      <span>{counter}</span>
+      <button onClick={() => dispatch({ type: "INCREMENT" })}>
+        Increment Counter
+      </button>
+    </section>
+  );
+};
+
+```

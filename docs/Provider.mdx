@@ -1,0 +1,27 @@
+---
+title: Provider
+description: Provider component makes Redhooks store available to any nested components.
+position: 3
+---
+
+# Provider
+
+```javascript
+<Provider store={store} />
+```
+The `Provider` component makes Redhooks store available to any nested components.
+
+```javascript
+import React from "react";
+import Provider from "redhooks";
+import store from "./store";
+import ReadFromStore from "./components/ReadFromStore";
+
+export default function App() {
+  return (
+    <Provider store={store}>
+      <ReadFromStore />
+    </Provider>
+  );
+}
+```
