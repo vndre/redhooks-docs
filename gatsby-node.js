@@ -39,7 +39,8 @@ exports.sourceNodes = ({ actions, schema }) => {
       fields: {
         id: { type: 'ID!' },
         title: { type: 'String!' },
-        description: { type: 'String' },
+        description: { type: 'String!' },
+        position: { type: 'Int!' },
         slug: { type: 'String!' },
         headings: {
           type: '[MdxHeadingMdx!]',
@@ -115,10 +116,11 @@ exports.onCreateNode = ({
       })
     }
 
-    const { title } = node.frontmatter
-    const { description } = node.frontmatter
+    const { title, description, position } = node.frontmatter
 
-    const fieldData = { title, description, slug }
+    const fieldData = {
+      title, description, position, slug
+    }
 
     createNode({
       ...fieldData,
@@ -149,6 +151,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         nodes {
           id
           slug
+          position
         }
       }
     }
