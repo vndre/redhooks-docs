@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
   const isDesktop = width > 768
   const { allDocs } = useStaticQuery(graphql`
     query docsQuery {
-      allDocs {
+      allDocs(sort: {fields: position}) {
         edges {
           node {
             title
