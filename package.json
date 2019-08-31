@@ -39,8 +39,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:js": "eslint . --ext .js,.jsx",
     "lint:css": "stylelint './src/**/*.js'",
-    "prod": "gatsby serve",
-    "prod:web": "gatsby serve -H 0.0.0.0"
+    "serve": "gatsby serve",
+    "serve:web": "gatsby serve -H 0.0.0.0",
+    "prod": "yarn build && yarn serve:web"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
