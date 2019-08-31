@@ -13,7 +13,6 @@ const Layout = ({ children }) => {
   let width
   if (typeof window !== 'undefined') {
     width = useWindowDimensions().width
-    console.log('width', width)
   }
   const isDesktop = width > 768
   const { allDocs } = useStaticQuery(graphql`
